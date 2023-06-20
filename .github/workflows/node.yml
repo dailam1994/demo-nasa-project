@@ -8,9 +8,11 @@ jobs:
   build:
     env:
       CI: true # Let's React know to disable test-watch-mode
+      MONGO_URL: mongodb://localhost/nasa
     strategy:
       matrix:
         node-version: [14.x, 16.x] # Runs (2) Builds for Node-versions in parallel
+        mongodb-version: ['4.4', '5.6']
     runs-on: windows-latest # windows-latest || macos-latest 
   # deploy: 
     # needs: build # Runs sequentially jobs:build:, if not specified, deploy: runs parallel with build:
@@ -20,6 +22,10 @@ jobs:
         uses: actions/setup-node@v2
         with: 
           node-version: ${{ matrix.node-version }} # '16' - original # Run both the node-versions from strategy
+      - name: Use MongoDB from GitHub actions
+        uses: supercharge/mongodb-github-action@1.8.0
+        with: 
+          mongodb-version: ${{ matrix.mongodb-version }}
       - run: npm install # Custom action install node-package-modules
       - run: npm run build --prefix client # cd client & npm run build
       - run: npm test
