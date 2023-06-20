@@ -1,0 +1,19 @@
+name: NASA Project CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest # windows-latest || macos-latest 
+  # deploy: 
+    # needs: build # Runs sequentially jobs:build:, if not specified, deploy: runs parallel with build:
+    steps: 
+      - uses: actions/checkout@v2 # Default action commands for checkout w/ specified version
+      - name: Use Node.js version 16 # Default action Auto install node version
+        uses: actions/setup-node@v2
+        with: 
+          node-version: '16'
+      - run: npm install # Custom action install node-package-modules
+      - run: cd client & npm run build # npm run build --prefix client
