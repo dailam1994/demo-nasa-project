@@ -11,8 +11,8 @@ jobs:
       MONGO_URL: mongodb://localhost/nasa
     strategy:
       matrix:
-        node-version: [14.x, 16.x] # Runs (2) Builds for Node-versions in parallel
-        mongodb-version: ['5.0']
+        node-version: [14.x, 16.x] # [14.x, 16.x] Original # Runs (2) Builds for Node-versions in parallel
+        mongodb-version: ['5.0'] # Only works with specific versions from docs
     runs-on: ubuntu-latest # windows-latest || macos-latest 
   # deploy: 
     # needs: build # Runs sequentially jobs:build:, if not specified, deploy: runs parallel with build:
