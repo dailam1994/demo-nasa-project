@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-server": "cd server & npm install",
-    "install-client": "cd client & npm install",
+    "install-server": "npm install --prefix server", 
+    "install-client": "npm install --prefix client",
     "install": "npm run install-server && npm run install-client",
-    "server": "cd server & npm run watch",
-    "client": "cd client & npm start",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
     "watch": "start npm run server & start npm run client",
-    "build-client": "cd client & npm run build",
+    "build-client": "npm run build --prefix client",
     "deploy": "npm run build-client && start npm run server",
     "test": "npm test --prefix server && npm test --prefix client"
   },
