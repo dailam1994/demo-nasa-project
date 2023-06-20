@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 jobs:
   build:
-    runs-on: ubuntu-latest # windows-latest || macos-latest 
+    runs-on: windows-latest # windows-latest || macos-latest 
   # deploy: 
     # needs: build # Runs sequentially jobs:build:, if not specified, deploy: runs parallel with build:
     steps: 
